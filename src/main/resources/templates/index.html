@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Lista de Imóveis</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="header-container">
+        <h2>Lista de Imoveis</h2>
+        <div class="jumbotron jumbotron-fluid bg-light py-4">
+            <a class="btn btn-primary" th:href="@{cadastrar}">Cadastrar</a>
+        </div>
+    </div>
+
+    <form class="mb-4" th:action="@{/buscar}" method="get">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-2">
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" name="id" id="id" th:value="${param.id}" aria-describedby="idHelp">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Rua</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Bairro</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="imoveis : ${list}">
+            <td th:text="${imoveis.id}"></td>
+            <td th:text="${imoveis.rua}"></td>
+            <td th:text="${imoveis.numero}"></td>
+            <td th:text="${imoveis.bairro}"></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a type="button" class="btn btn-warning" th:href="@{/update/{id}(id=${imoveis.id})}">Update</a>
+                    <a type="button" class="btn btn-danger" th:href="@{/delete/{id}(id=${imoveis.id})}">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>

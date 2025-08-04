@@ -1,0 +1,32 @@
+.btn-update {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-view {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.btn-update:hover,
+.btn-delete:hover,
+.btn-view:hover {
+    opacity: 0.85;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
